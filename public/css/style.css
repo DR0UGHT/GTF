@@ -1,0 +1,290 @@
+/* Alighty Nesia Bold */
+@font-face {
+    font-family: 'Alighty Nesia Bold';
+    src: url('./Alighty Nesia Bold.ttf') format('truetype');
+}
+
+/* Alighty Nesia Regular */
+@font-face {
+    font-family: 'Alighty Nesia Regular';
+    src: url('./Alighty Nesia.ttf') format('truetype');
+}
+
+body{
+    background: linear-gradient(45deg, #a39193, #5a4d4e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+#myName{
+    bottom: 0;
+    right: 0;
+    margin: .5%;
+    font-family: 'Alighty Nesia Regular';
+    font-size: 1.5em;
+    position: absolute;
+}
+
+#menu{
+    /* background-color: #aa6f73; */
+    color: white;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    text-align: center;    
+    display: flex;
+    flex-direction: column;
+}
+
+#title{
+    /* shadow text */
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Alighty Nesia Bold';
+    font-size: 4em;
+    color: #f6e0b5;
+    height: 25%;
+    width: 100%;
+    flex: 1;
+}
+#items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 5%;
+    height: 100%;
+    flex: 1;
+}
+#game{
+    width: 100%;
+    height: 100%;
+}
+.mmButton{
+    width: 30%;
+    /* height: 35%; */
+    flex: 1;
+    border-radius: 5% / 15%;
+    border: solid .25vw #000000;
+    cursor: pointer;
+    background-color: #66545e;
+    color: white;
+    font-size: 2em;
+    font-family: 'Alighty Nesia Regular';
+    word-spacing: .5em;
+    transition: .5s;
+}
+
+.mmButton:hover{
+    background-color: #4a3f45;
+    transform: scale(1.05) rotate(1deg);
+    transition: .5s;
+}
+
+.mmInput{
+    width: 60%;
+    flex: 1;    
+    cursor: pointer;
+    background-color: #e0e0e0;
+    color: rgb(0, 0, 0);
+    font-size: 2em;
+    font-family: 'Alighty Nesia Regular';
+    border: solid .15vw #000000;
+    height: 35%;
+}
+
+.gButton{
+    width: 30%;
+    height: 35%;
+    border-radius: 5% / 15%;
+    border: solid .15vw #000000;
+}
+
+.buttonHolder{
+    height: 100%;
+    width: 100%;
+}
+
+#lobID{
+    color:aquamarine;
+    font-size: 1.5em;
+    top: 0;
+    left: 0;
+    margin-left: 2.5%;
+    position: absolute;
+}
+#lobbyIdSpan{
+    color: #000000;
+    font-size: .75em;
+    user-select: all;
+}
+
+.readyUp{
+    width: 100%;
+    height: 20%;
+    font-size: 2em;
+    font-family: 'Alighty Nesia Regular';
+    border-radius: 5% / 15%;
+    flex: 1;
+    transition: .5s;
+}
+
+.readyUp:hover{
+    background-color: #c8c7c8;
+    transform: scale(1.01);
+    transition: .5s;
+}
+.rUp{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+#filters{
+    height: min-content;
+    width: 80%;
+    font-size: 2em;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    flex-wrap: wrap;
+}
+#rr{
+    height: 50%;
+    width: 40%;
+    
+}
+.normText{
+    font-size: 2em;
+    font-family: 'Alighty Nesia Regular';
+    color: #000000;
+    margin: 0;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.pName{
+    color: #000000;
+    font-size: 2.5em;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 5%;
+    max-height: 5%;
+    margin-top: 2.5%;
+    flex:1;
+
+}
+.pScore{
+    color: #000000;
+    font-size: 2em;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    height: 3%;
+    max-height: 5%;
+    margin-bottom:5%;
+    flex: 10%;
+}
+#middleLine{
+    width: .5%;
+    height: 100%;
+    background-color: #000000;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.playerArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 0%;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    font-family: 'Alighty Nesia Regular';
+}
+
+.player{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.wfit{
+    height: 20%;
+    font-size: 1.5em;
+    flex:1;
+    margin: 0;
+}
+
+.flag{
+    width: 100%;
+    height: auto;
+}
+
+.flagHolder{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.flagArea{
+    width: 100%;
+    max-width: 100%;
+    height: 40%;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.finalGuess{
+    font-size: 2em;
+    font-family: 'Alighty Nesia Regular';
+    flex:1;
+    margin: 0;
+    height: 1%;
+}
+
+.guessArea{
+    height: 10%;
+    max-height: 10%;
+    display: flex;
+    justify-content: bottom;
+    align-items: end;
+    flex:1;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+}

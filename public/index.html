@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess That Flag</title>
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+    <h1 id="myName">Liam Carroll</h1>
+    <div id="menu" style="display: flex;">
+        <h1 id="title">Guess That<br>Flag!</h1>
+        
+
+        <div id="firstMenu" class="buttonHolder">
+            <div id="items">
+                <button onclick="joinLobbyMenu()" class="mmButton">Join Lobby</button>
+                <button onclick="createLobbyMenu()" class="mmButton">Create Lobby</button>
+            </div>
+        </div>
+
+        <div id="joinLobbyMenu" style="display: none;" class="buttonHolder">
+            <div id="items">
+                <input type="text" id="playerNamejoin" placeholder="Enter Name" class="mmInput" autocomplete="off">
+                <input type="text" id="joinLobbyId" placeholder="Lobby ID" class="mmInput" autocomplete="off">
+                <button onclick="joinLobby()" class="mmButton">Join</button>
+                <button onclick="backToMenu()" class="mmButton">Back</button>
+            </div>
+        </div>
+
+        <div id="createLobbyMenu" style="display: none;" class="buttonHolder">
+            <div id="items">
+                <input type="text" id="playerNameCreate" placeholder="Enter Name" class="mmInput" autocomplete="off">
+                <button onclick="createLobby()" class="mmButton">Create</button>
+                <button onclick="backToMenu()" class="mmButton">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" style="display: none;">
+        <h1>Loading...</h1>
+    </div>
+
+    <div id="game" style="display: none;">
+        <h1 id="lobID">Invite Code: <span id="lobbyIdSpan">abcdefghijkl123454</span></h1>
+
+        <div id="middleLine"></div>
+
+        <div class="playerArea">
+            <div class="player" style="display: none;" id="playGameP1">
+                <h1 class="pName" id="p1Game">Player 1</h1>
+                <h1 class="pScore" id="p1Score">0/0</h1>
+                <div class="flagArea">
+                    <div id="flag1" class="flagHolder">
+                        <h2 class="wfit">What flag is this?</h2>
+                        <img id="flagP1" class="flag" alt="flag"src="">
+                        <b id="p1guess" class="finalGuess"></b>
+                    </div> 
+                    <div id="flag2" class="flagHolder" style="display: none;">
+                        <h2 class="wfit">Your guess was</h2>
+                        <img id="flagP1Real" class="flag" alt="flag"src="">
+                        <b id="p2Real" class="finalGuess"></b>
+                    </div>
+
+                </div>
+                <div class="guessArea" id="ga" style="display: flex;"> 
+                    <h1 id="countDown">10</h1>
+                    <input type="text" id="guessP1" class="mmInput" placeholder="Enter Guess" autocomplete="off" list="count" onchange="clearRed(this)">
+                    <datalist id="count">
+                        <option value="Andorra">ad</option>
+                        <option value="United Arab Emirates">ae</option>
+                        <option value="Afghanistan">af</option>
+                        <option value="Antigua and Barbuda">ag</option>
+                        <option value="Anguilla">ai</option>
+                        <option value="Albania">al</option>
+                        <option value="Armenia">am</option>
+                        <option value="Angola">ao</option>
+                        <option value="Antarctica">aq</option>
+                        <option value="Argentina">ar</option>
+                        <option value="American Samoa">as</option>
+                        <option value="Austria">at</option>
+                        <option value="Australia">au</option>
+                        <option value="Aruba">aw</option>
+                        <option value="Åland Islands">ax</option>
+                        <option value="Azerbaijan">az</option>
+                        <option value="Bosnia and Herzegovina">ba</option>
+                        <option value="Barbados">bb</option>
+                        <option value="Bangladesh">bd</option>
+                        <option value="Belgium">be</option>
+                        <option value="Burkina Faso">bf</option>
+                        <option value="Bulgaria">bg</option>
+                        <option value="Bahrain">bh</option>
+                        <option value="Burundi">bi</option>
+                        <option value="Benin">bj</option>
+                        <option value="Saint Barthélemy">bl</option>
+                        <option value="Bermuda">bm</option>
+                        <option value="Brunei">bn</option>
+                        <option value="Bolivia">bo</option>
+                        <option value="Caribbean Netherlands">bq</option>
+                        <option value="Brazil">br</option>
+                        <option value="Bahamas">bs</option>
+                        <option value="Bhutan">bt</option>
+                        <option value="Bouvet Island">bv</option>
+                        <option value="Botswana">bw</option>
+                        <option value="Belarus">by</option>
+                        <option value="Belize">bz</option>
+                        <option value="Canada">ca</option>
+                        <option value="Cocos (Keeling) Islands">cc</option>
+                        <option value="DR Congo">cd</option>
+                        <option value="Central African Republic">cf</option>
+                        <option value="Republic of the Congo">cg</option>
+                        <option value="Switzerland">ch</option>
+                        <option value="Côte d'Ivoire (Ivory Coast)">ci</option>
+                        <option value="Cook Islands">ck</option>
+                        <option value="Chile">cl</option>
+                        <option value="Cameroon">cm</option>
+                        <option value="China">cn</option>
+                        <option value="Colombia">co</option>
+                        <option value="Costa Rica">cr</option>
+                        <option value="Cuba">cu</option>
+                        <option value="Cape Verde">cv</option>
+                        <option value="Curaçao">cw</option>
+                        <option value="Christmas Island">cx</option>
+                        <option value="Cyprus">cy</option>
+                        <option value="Czechia">cz</option>
+                        <option value="Germany">de</option>
+                        <option value="Djibouti">dj</option>
+                        <option value="Denmark">dk</option>
+                        <option value="Dominica">dm</option>
+                        <option value="Dominican Republic">do</option>
+                        <option value="Algeria">dz</option>
+                        <option value="Ecuador">ec</option>
+                        <option value="Estonia">ee</option>
+                        <option value="Egypt">eg</option>
+                        <option value="Western Sahara">eh</option>
+                        <option value="Eritrea">er</option>
+                        <option value="Spain">es</option>
+                        <option value="Ethiopia">et</option>
+                        <option value="European Union">eu</option>
+                        <option value="Finland">fi</option>
+                        <option value="Fiji">fj</option>
+                        <option value="Falkland Islands">fk</option>
+                        <option value="Micronesia">fm</option>
+                        <option value="Faroe Islands">fo</option>
+                        <option value="France">fr</option>
+                        <option value="Gabon">ga</option>
+                        <option value="United Kingdom">gb</option>
+                        <option value="England">gb-eng</option>
+                        <option value="Northern Ireland">gb-nir</option>
+                        <option value="Scotland">gb-sct</option>
+                        <option value="Wales">gb-wls</option>
+                        <option value="Grenada">gd</option>
+                        <option value="Georgia">ge</option>
+                        <option value="French Guiana">gf</option>
+                        <option value="Guernsey">gg</option>
+                        <option value="Ghana">gh</option>
+                        <option value="Gibraltar">gi</option>
+                        <option value="Greenland">gl</option>
+                        <option value="Gambia">gm</option>
+                        <option value="Guinea">gn</option>
+                        <option value="Guadeloupe">gp</option>
+                        <option value="Equatorial Guinea">gq</option>
+                        <option value="Greece">gr</option>
+                        <option value="South Georgia">gs</option>
+                        <option value="Guatemala">gt</option>
+                        <option value="Guam">gu</option>
+                        <option value="Guinea-Bissau">gw</option>
+                        <option value="Guyana">gy</option>
+                        <option value="Hong Kong">hk</option>
+                        <option value="Heard Island and McDonald Islands">hm</option>
+                        <option value="Honduras">hn</option>
+                        <option value="Croatia">hr</option>
+                        <option value="Haiti">ht</option>
+                        <option value="Hungary">hu</option>
+                        <option value="Indonesia">id</option>
+                        <option value="Ireland">ie</option>
+                        <option value="Isreal">il</option>
+                        <option value="Isle of Man">im</option>
+                        <option value="India">in</option>
+                        <option value="British Indian Ocean Territory">io</option>
+                        <option value="Iraq">iq</option>
+                        <option value="Iran">ir</option>
+                        <option value="Iceland">is</option>
+                        <option value="Italy">it</option>
+                        <option value="Jersey">je</option>
+                        <option value="Jamaica">jm</option>
+                        <option value="Jordan">jo</option>
+                        <option value="Japan">jp</option>
+                        <option value="Kenya">ke</option>
+                        <option value="Kyrgyzstan">kg</option>
+                        <option value="Cambodia">kh</option>
+                        <option value="Kiribati">ki</option>
+                        <option value="Comoros">km</option>
+                        <option value="Saint Kitts and Nevis">kn</option>
+                        <option value="North Korea">kp</option>
+                        <option value="South Korea">kr</option>
+                        <option value="Kuwait">kw</option>
+                        <option value="Cayman Islands">ky</option>
+                        <option value="Kazakhstan">kz</option>
+                        <option value="Laos">la</option>
+                        <option value="Lebanon">lb</option>
+                        <option value="Saint Lucia">lc</option>
+                        <option value="Liechtenstein">li</option>
+                        <option value="Sri Lanka">lk</option>
+                        <option value="Liberia">lr</option>
+                        <option value="Lesotho">ls</option>
+                        <option value="Lithuania">lt</option>
+                        <option value="Luxembourg">lu</option>
+                        <option value="Latvia">lv</option>
+                        <option value="Libya">ly</option>
+                        <option value="Morocco">ma</option>
+                        <option value="Monaco">mc</option>
+                        <option value="Moldova">md</option>
+                        <option value="Montenegro">me</option>
+                        <option value="Saint Martin">mf</option>
+                        <option value="Madagascar">mg</option>
+                        <option value="Marshall Islands">mh</option>
+                        <option value="North Macedonia">mk</option>
+                        <option value="Mali">ml</option>
+                        <option value="Myanmar">mm</option>
+                        <option value="Mongolia">mn</option>
+                        <option value="Macau">mo</option>
+                        <option value="Northern Mariana Islands">mp</option>
+                        <option value="Martinique">mq</option>
+                        <option value="Mauritania">mr</option>
+                        <option value="Montserrat">ms</option>
+                        <option value="Malta">mt</option>
+                        <option value="Mauritius">mu</option>
+                        <option value="Maldives">mv</option>
+                        <option value="Malawi">mw</option>
+                        <option value="Mexico">mx</option>
+                        <option value="Malaysia">my</option>
+                        <option value="Mozambique">mz</option>
+                        <option value="Namibia">na</option>
+                        <option value="New Caledonia">nc</option>
+                        <option value="Niger">ne</option>
+                        <option value="Norfolk Island">nf</option>
+                        <option value="Nigeria">ng</option>
+                        <option value="Nicaragua">ni</option>
+                        <option value="Netherlands">nl</option>
+                        <option value="Norway">no</option>
+                        <option value="Nepal">np</option>
+                        <option value="Nauru">nr</option>
+                        <option value="Niue">nu</option>
+                        <option value="New Zealand">nz</option>
+                        <option value="Oman">om</option>
+                        <option value="Panama">pa</option>
+                        <option value="Peru">pe</option>
+                        <option value="French Polynesia">pf</option>
+                        <option value="Papua New Guinea">pg</option>
+                        <option value="Philippines">ph</option>
+                        <option value="Pakistan">pk</option>
+                        <option value="Poland">pl</option>
+                        <option value="Saint Pierre and Miquelon">pm</option>
+                        <option value="Pitcairn Islands">pn</option>
+                        <option value="Puerto Rico">pr</option>
+                        <option value="Palestine">ps</option>
+                        <option value="Portugal">pt</option>
+                        <option value="Palau">pw</option>
+                        <option value="Paraguay">py</option>
+                        <option value="Qatar">qa</option>
+                        <option value="Réunion">re</option>
+                        <option value="Romania">ro</option>
+                        <option value="Serbia">rs</option>
+                        <option value="Russia">ru</option>
+                        <option value="Rwanda">rw</option>
+                        <option value="Saudi Arabia">sa</option>
+                        <option value="Solomon Islands">sb</option>
+                        <option value="Seychelles">sc</option>
+                        <option value="Sudan">sd</option>
+                        <option value="Sweden">se</option>
+                        <option value="Singapore">sg</option>
+                        <option value="Saint Helena, Ascension and Tristan da Cunha">sh</option>
+                        <option value="Slovenia">si</option>
+                        <option value="Svalbard and Jan Mayen">sj</option>
+                        <option value="Slovakia">sk</option>
+                        <option value="Sierra Leone">sl</option>
+                        <option value="San Marino">sm</option>
+                        <option value="Senegal">sn</option>
+                        <option value="Somalia">so</option>
+                        <option value="Suriname">sr</option>
+                        <option value="South Sudan">ss</option>
+                        <option value="São Tomé and Príncipe">st</option>
+                        <option value="El Salvador">sv</option>
+                        <option value="Sint Maarten">sx</option>
+                        <option value="Syria">sy</option>
+                        <option value="Eswatini (Swaziland)">sz</option>
+                        <option value="Turks and Caicos Islands">tc</option>
+                        <option value="Chad">td</option>
+                        <option value="French Southern and Antarctic Lands">tf</option>
+                        <option value="Togo">tg</option>
+                        <option value="Thailand">th</option>
+                        <option value="Tajikistan">tj</option>
+                        <option value="Tokelau">tk</option>
+                        <option value="Timor-Leste">tl</option>
+                        <option value="Turkmenistan">tm</option>
+                        <option value="Tunisia">tn</option>
+                        <option value="Tonga">to</option>
+                        <option value="Turkey">tr</option>
+                        <option value="Trinidad and Tobago">tt</option>
+                        <option value="Tuvalu">tv</option>
+                        <option value="Taiwan">tw</option>
+                        <option value="Tanzania">tz</option>
+                        <option value="Ukraine">ua</option>
+                        <option value="Uganda">ug</option>
+                        <option value="United States">us</option>
+                        <option value="Uruguay">uy</option>
+                        <option value="Uzbekistan">uz</option>
+                        <option value="Vatican City (Holy See)">va</option>
+                        <option value="Saint Vincent and the Grenadines">vc</option>
+                        <option value="Venezuela">ve</option>
+                        <option value="British Virgin Islands">vg</option>
+                        <option value="United States Virgin Islands">vi</option>
+                        <option value="Vietnam">vn</option>
+                        <option value="Vanuatu">vu</option>
+                        <option value="Wallis and Futuna">wf</option>
+                        <option value="Samoa">ws</option>
+                        <option value="Kosovo">xk</option>
+                        <option value="Yemen">ye</option>
+                        <option value="Mayotte">yt</option>
+                        <option value="South Africa">za</option>
+                        <option value="Zambia">zm</option>
+                        <option value="Zimbabwe">zw</option>
+
+
+
+                        
+                        
+                    </datalist>
+                    <button onclick="submitAnswer()" class="gButton">Submit</button>
+                </div>
+
+                <div class="guessArea" id="redUp" style="display: none;">
+                    <button class="readyUp" style="display: block; height:50% !important;" id="p1RU2" onclick="ReadyUp()">Ready Up</button>
+                </div>
+            </div>
+
+            <div class="player" style="display: none;" id="playGameP2">
+                <h1 class="pName" id="p2Game">Player 2</h1>
+                <h1 class="pScore" id="p2Score">0/0</h1>
+
+                <div class="flagArea" id="p2tAnswers" style="display: none;">
+                    <div id="flag12E" class="flagHolder">
+                        <h2 class="wfit">What flag is this?</h2>
+                        <img id="flagP2E" class="flag" alt="flag"src="">
+                        <b id="p2Eguess" class="finalGuess"></b>
+                    </div> 
+                    <div id="flag22E" class="flagHolder" style="display: flex;">
+                        <h2 class="wfit">Their guess was</h2>
+                        <img id="flagP2EReal" class="flag" alt="flag"src="">
+                        <b id="p2EReal" class="finalGuess"></b>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="player" style="display: flex;" id="readyUpP1">
+                <h1 class="pName" id="p1" style="height: 50% !important;">Player 1</h1>
+                <div class="rUp">
+                    <div id="filters" style="display: none;">
+                        <div>
+                            <input type="checkbox" id="Europe" class="filter" checked>
+                            <label for="Europe">Europe</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Asia" class="filter" checked>
+                            <label for="Asia">Asia</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Africa" class="filter" checked>
+                            <label for="Africa">Africa</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Oceania" class="filter" checked>
+                            <label for="Oceania">Oceania</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Americas" class="filter" checked>
+                            <label for="Americas">Americas</label>
+                        </div>
+                    </div>
+                    <div id="rr">
+                        <button class="readyUp" style="display: none;" id="p1RU" onclick="ReadyUp()">Ready Up</button>
+                    </div>
+                    <h1 class="normText" style="display: none;" id ="p1Waiting">Ready. Waiting...</h1>
+                </div>
+            </div>
+
+            <div class="player" style="display: flex;" id="readyUpP2">
+                <h1 class="pName" id="p2" style="height: 50% !important;">Player 2</h1>
+                
+                <h1 class="normText"  id="p2Waiting">Waiting for <span id="p2Name">Player 2</span> to ready up...</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
